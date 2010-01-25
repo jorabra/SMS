@@ -17,9 +17,9 @@ import sys
 import ConfigParser
 
 
-# TODO:
-# - Sanitize input
-
+# Configuration files
+config_file = 'sms.config'
+config_file_local = 'sms.local.config'
 
 def main(argv):
     try:
@@ -68,8 +68,15 @@ def main(argv):
 
 
 def compile_settings(to_nmbr, from_nmbr, message):
+    if not os.path.exists(config_file):
+        sys.exit("Configuration file %s not found!" % config_file)
+
     config = ConfigParser.ConfigParser()
-    config.read('sms.config')
+    config.read(config_file)
+
+    # Overload local configuration
+    if os.path.exists(config_file_local):
+        config.read(config_file_local)
 
     data = None
     url = None
@@ -124,7 +131,7 @@ def send_request(url, settings):
 
 def usage():
     print >> sys.stderr, "\
-Usage: %s [OPTION]... TEXT \n\
+Usage: %s [OPTION]... \n\
 \n\
 Report bugs to jabr@pludre.net" % sys.argv[0]
 
