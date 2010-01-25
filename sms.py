@@ -107,10 +107,14 @@ def calculate_nmbr_msgs(len_msg, len_limit):
     
 
 def check_message(settings):
-    print "* To: %s -- From: %s\n* Message [%s]: %s" % (settings['to'], settings['from'], len(settings['text']), settings['text'].decode('iso-8859-1'))
+    print "* To: %s -- From: %s\n* Message [%s]: %s" % \
+        (settings['to'], settings['from'], len(settings['text']), \
+        settings['text'].decode('iso-8859-1'))
     answer = None
     while True:
-        answer = raw_input("[%s] Send %s message(s)? [y/n]: " % (len(settings['text']), calculate_nmbr_msgs(len(settings['text']), 160)))
+        answer = raw_input("[%s] Send %s message(s)? [y/n]: " % \
+            (len(settings['text']), calculate_nmbr_msgs(len(settings['text']), \
+            160)))
         answer.strip()
         if answer == 'y':
             return True
