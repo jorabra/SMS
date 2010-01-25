@@ -34,9 +34,7 @@ def main(argv):
     from_nmbr = None
     message = None
     test = False
-    #verbose = False
 
-    # Check if need for check on getopts is cleared by exceptions above ...
     for opt, arg in opts:
         if opt == '-t':
             to_nmbr = arg
@@ -49,10 +47,9 @@ def main(argv):
         else:
             assert False, "Yo, fubar! There's a unhandled option"
 
-    # Check that we have enough variables to act.
     if to_nmbr and len(message) > 1:
         (url, settings) = compile_settings(to_nmbr, from_nmbr, message)
-        if check_message(settings): # Split up into more than one message (160 chars per msg)
+        if check_message(settings):
             if test:
                 print settings
                 data = urllib.urlencode(settings)
