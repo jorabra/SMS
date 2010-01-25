@@ -4,3 +4,6 @@
 - Sanitize input
 - Clean code (PEP, etc.)
 - Exceptions
+- Accecpt default number from configuration
+
+- Refactor and facilitate for different gateways and protocols.
