@@ -35,7 +35,7 @@ def main(argv):
         elif opt == '-f':
             from_nmbr = arg
         elif opt == '-m':
-            message = arg.strip()
+            message = arg.strip().decode('utf-8').encode('iso-8859-1')
         elif opt == '--test':
             test = True
         else:
