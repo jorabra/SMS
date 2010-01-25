@@ -1,6 +1,14 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
 
+# A simple SMS application for sending SMS through a SMS gateway using the HTTP
+# protocol. This implementation is spesific to Clickatell, but the data
+# dictionary in compile_settings() can be tuned to use other gateways accepting
+# the HTTP protocol. 
+#
+# Author: Jørgen Abrahamsen <jabr@pludre.net>
+#
+
 import os
 import getopt
 import urllib2
